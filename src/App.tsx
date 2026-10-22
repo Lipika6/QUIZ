@@ -421,7 +421,7 @@ function App() {
                   onClick={shuffleRemaining}
                 >Shuffle remaining</button>
               </div>
-              <div className="question-navigation">
+<div className="question-navigation">
   <button
     className="text-button"
     disabled={quiz.index === 0}
@@ -430,15 +430,9 @@ function App() {
     ← Previous question
   </button>
 
-  <span>{Object.keys(quiz.outcomes).length} answered or skipped</span>
-
-  <button
-    className="text-button"
-    disabled={quiz.index === quiz.questions.length - 1}
-    onClick={() => selectQuestion(quiz.index + 1)}
-  >
-    Next question →
-  </button>
+  <span>
+    {Object.keys(quiz.outcomes).length} answered or skipped
+  </span>
 </div>
             </article>
           </section>
