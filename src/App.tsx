@@ -407,11 +407,22 @@ function App() {
               )}
               <div className="quiz-actions">
                 {!quiz.submitted && <button className="button primary" disabled={quiz.selectedOptionIds.length === 0} onClick={submitAnswer}>Submit answer</button>}
-                {quiz.submitted && !currentOutcome?.correct && (
-                  <button className="button primary" onClick={() => advance(quiz)}>
-                    {quiz.index === quiz.questions.length - 1 ? "Finish quiz" : "Next question"}
-                  </button>
-                )}
+                 {quiz.submitted && (
+  <button
+    className="button primary"
+    onClick={() => {
+      if (quiz.index === quiz.questions.length - 1) {
+        finishQuiz(quiz);
+      } else {
+        selectQuestion(quiz.index + 1);
+      }
+    }}
+  >
+    {quiz.index === quiz.questions.length - 1
+      ? "Finish quiz"
+      : "Next question"}
+  </button>
+)}
                 {!quiz.submitted && <button className="button secondary" onClick={() => advance(quiz)}>
                   {quiz.index === quiz.questions.length - 1 ? "Finish quiz" : "Skip question"}
                 </button>}
